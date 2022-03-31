@@ -1,0 +1,24 @@
+<div style = "text-align:center">Country:
+    <select [(ngModel)]="Country">
+      <option [ngValue]="null" disabled>Select Country</option>
+      <option *ngFor="let Country of countries" [ngValue]="Country.id">{{Country.name}}</option>
+    </select>
+</div>
+<div style="text-align: center;"> Months :
+  <select (change) = "changemonths($event)" name = "month">
+     <option *ngFor = "let i of months">{{i}}</option>
+  </select>
+</div>
+<div style="text-align: center;">
+  <span *ngIf = "isavailable;then condition1 else condition2">Condition is valid.</span>
+  <ng-template #condition1>Condition is valid from template</ng-template>
+  <ng-template #condition2>Condition is invalid from template</ng-template>
+</div>
+<div style="text-align: center;">
+  <button (click)="myClickFunction($event)">
+    Click Me
+  </button>
+</div>
+<div style="text-align: center;">
+ <p> Square root of 4 is:{{ 4 | square}}</p>
+</div>
