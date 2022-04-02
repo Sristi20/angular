@@ -51,10 +51,6 @@
   Email entered is : {{emailid}}
 </p>
 <br/>
-<div style="text-align:center">
-  <h1>Hello {{message}}</h1> <br/> 
-  <button (click)="nextcount()">change count</button> <br/>
-  <appchild [counter]="count"></appchild> 
-</div>
+<app-parent></app-parent>
 <router-outlet></router-outlet>
 <app-dropdown></app-dropdown>

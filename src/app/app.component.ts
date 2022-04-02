@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MyserviceService } from './myservice.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ChildComponent } from './child/child.component';
 
 @Component({
   selector: 'app-root',
@@ -24,16 +23,6 @@ export class AppComponent {
    }
    onClickSubmit(data:any) {this.emailid = data.emailid;
   }
-  message : string = "i am parent";
-  count : number = 0; 
-  nextcount(){
-    console.log("hahahah");
-    this.count = this.getrandomintinclusive(this.count,this.count+1000);
-    }
-  getrandomintinclusive(min :number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  
 }
 

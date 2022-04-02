@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MyserviceService } from './myservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ChildComponent } from './child/child.component';
+import { ParentComponent } from './parent/parent.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { ChildComponent } from './child/child.component';
     ChangeTextDirective,
     CustomPipe,
     SquarePipe,
-    ChildComponent
+    ChildComponent,
+    ParentComponent
   ],
   imports: [
     BrowserModule,

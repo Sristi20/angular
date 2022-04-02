@@ -1,0 +1,20 @@
+
+<form #userlogin = "ngForm" (ngSubmit) = "addChild(userlogin.value)"  class="parent-form" style="text-align: center;">
+    <h2>Parent Input box:</h2>
+    <input type = "text" name = "fruit" id="inpt"  ngModel>
+    <br/>
+    <input type = "submit" value = "submit">
+ </form>
+ <div class="parent"style="background-color: red; text-align:center">
+     <h1>Parent Component Change by himself</h1>
+     <ul>
+         <li *ngFor="let i of Pafruits" >  {{ "parent=>"+ i}} </li>
+     </ul>
+ </div>
+ <div class="parent"style="background-color: yellow; text-align:center">
+    <h1>Parent Component Change by child </h1>
+    <ul>
+        <li *ngFor="let i of items" >  {{ "parent=>"+ i}} </li>
+    </ul>
+</div>
+<app-child [parentFruits]="Pafruits" (Chifruits)="addItem($event)" ></app-child>

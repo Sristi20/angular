@@ -1,33 +1,21 @@
-import { Component, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'appchild',
+  selector: 'app-child',
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.css']
 })
-export class ChildComponent implements OnChanges {
-  
+export class ChildComponent implements OnInit {
   @Input()
-  counter = 0 ; 
-  changelog : string[] = []; 
-  constructor(){
+  parentFruits!: string[];
+  @Output() Chifruits=new EventEmitter<string>();
+   childFruits:string[]=[];
+   addParent(ele:any){
+     this.Chifruits.emit(ele.fruit);
+     this.childFruits.push(ele.fruit);
+   }
+  constructor() { }
 
-  } 
-  ngOnChanges(changes: SimpleChanges): void {
-    
-  }  
-
-
-  ngonchanges(changes : {[propkey:string]: SimpleChange}){
-
-  let  log : string [] =[];
-  for(let p in changes){
-      let c = changes[p];
-      console.log(c);
-      let from = JSON.stringify(c.previousValue);
-      let to = JSON.stringify(c.currentValue);
-      log.push(`${p} changed from ${from} to ${to}`);
-
+  ngOnInit(): void {
   }
-}
 }
