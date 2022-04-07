@@ -51,6 +51,68 @@
   Email entered is : {{emailid}}
 </p>
 <br/>
+<!-- main app container -->
+<div class="jumbotron" style="text-align: center;">
+  <div class="container text-center" style="text-align: center;">
+      <div class="row" style="text-align: center;">
+          <div class="col-sm-8 offset-sm-2" style="text-align: center;">
+              <div *ngFor="let message of messages" class="alert alert-success" style="text-align: center;">{{message.text}}</div>
+              <router-outlet></router-outlet>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="col-md-6"style="text-align: center">
+  <h1 class="form">Template Form</h1>
+  <form #myForm="ngForm" class="form" (ngSubmit)="Onsubmit(myForm.value); myForm.reset()">
+ <div class="form-group">
+     <input type="text" class="form-control" name="name" required placeholder="Enter Your name" #yourName="ngModel" [(ngModel)]= "user.name" >
+     <span class="error" *ngIf="yourName.invalid && yourName.touched">Please Enter Your Name</span>
+ </div>
+ <div class="form-group">
+      <input type="password" class="form-control" name="password" required placeholder="Enter password" #yourPassword="ngModel" ngModel >
+      <span class="error" *ngIf="yourPassword.invalid && yourPassword.touched">Please Enter password</span>
+ </div>
+ <div class="form-group">
+     <input type="email" class="form-control" name="email" required placeholder="Enter Your email" #yourEmail="ngModel" ngModel>
+     <span class="error" *ngIf="yourEmail.invalid && yourEmail.touched">Please Enter Your Email</span>
+ </div>
+ <div class="form-group">
+     <input type="tel" class="form-control" name="phone" required placeholder="Enter Your phone no." #yourPhone="ngModel" ngModel>
+     <span class="error" *ngIf="yourPhone.invalid && yourPhone.touched">Please Enter Your Phone</span>
+ </div>
+ <div class="form-group">
+     <input type="submit" [disabled]="myForm.invalid" class="btn btn-success">
+ </div>
+</form>
+</div>
+<!-- Model Driven Form-->
+<div class="col-md-6" style="text-align: center">
+  <h1 class="form">Reactive Form</h1>
+  <form [formGroup]="contactForm" class="form" >
+ <div class="form-group">
+     <input type="text" class="form-control" formControlName="yourName" placeholder="Enter Your name">
+ </div>
+ <div class="form-group">
+     <input type="email" class="form-control" formControlName="yourEmail" placeholder="Enter Your email" >
+     
+ </div>
+ <div class="form-group">
+     <input type="tel" class="form-control" formControlName="yourPhone" placeholder="Enter Your phone no." >
+     
+ </div>
+ <div class="form-group">
+  <input type="password" class="form-control" formControlName="yourPassword" placeholder="Enter Your password" >
+  
+</div>
+ <div class="form-group">
+     <input type="submit" class="btn btn-success" (click)="reactiveSubmit()">
+     &nbsp; &nbsp; <button (click)="setDate()" class="btn btn-primary">Set Values</button>
+    
+ </div>
+</form>
+</div>
+<app-home></app-home>
 <app-parent></app-parent>
 <router-outlet></router-outlet>
 <app-dropdown></app-dropdown>

@@ -14,6 +14,7 @@ import { MyserviceService } from './myservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ParentComponent } from './parent/parent.component';
     CustomPipe,
     SquarePipe,
     ChildComponent,
-    ParentComponent
+    ParentComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

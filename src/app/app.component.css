@@ -7,3 +7,9 @@ button{
 h1{
     color:brown;
 }
+.error{
+    color: red;
+}
+.form{
+    color: black;
+}
