@@ -1,118 +1,25 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style = "text-align:center">
-  <h1>
-     Welcome to {{title}}.
-  </h1>
-  <div style="text-align: center;">
-    <b>Different cases:</b><br/>
-    {{title | uppercase}}<br/>
-    {{title | lowercase}}
-  </div>
-<p> Start editing to see some magic happen :) </p>
+<div class="parent">
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>NAME </th>
+      <th>Email </th>
+      <th>Phone</th>
+      <th>Username</th>
+      <th>Website</th>
+      <th>Company </th>
+      <th>Adress</th>
+    </tr>
+    <tr *ngFor="let i of userinfo" >
+      <td>{{i.id}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.phone}}</td>
+      <td>{{i.username}}</td>
+      <td>{{i.website}}</td>
+      <td>{{i.company.name}}</td>
+      <td>{{i.address.city}}</td>
+    </tr>
+  </table>
 </div>
-<div style = "text-align:center">
-  <span appChangeText ><b>Welcome to {{title}}.</b></span>
-</div>
-<div style="text-align: center;">
-  <b>Date pipe:</b><br/>
-  {{todaydate | date:'d/M/y'}}<br/>
-  {{todaydate | date:'shortTime'}}
-</div>
-<br />
-<div style="text-align: center;">
-<a routerLink = "new">New component</a>
-</div>
-<br />
-<form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" style="text-align:center">
-  <input type = "text" name = "emailid" placeholder = "emailid" ngModel>
-  <br/>
-  <br/>
-  <input type = "password" name = "passwd" placeholder = "passwd" ngModel>
-  <br/>
-  <br/>
-  <input type = "submit" value = "submit">
-</form>
-<br/>
-<br/>
-<div style="text-align:center">
-  <form [formGroup] = "formdata" (ngSubmit) = "onClickSubmit(formdata.value)" >
-     <input type = "text" class = "fortextbox" name = "emailid" placeholder = "emailid" 
-        formControlName="emailid">
-     <br/>
-     
-     <input type = "password" class = "fortextbox" name="passwd" 
-        placeholder = "passwd" formControlName = "passwd">
-     <br/>
-     
-     <input type = "submit" class = "forsubmit" value = "Log In">
-  </form>
-</div>
-<p style="text-align:center">
-  Email entered is : {{emailid}}
-</p>
-<br/>
-<!-- main app container -->
-<div class="jumbotron" style="text-align: center;">
-  <div class="container text-center" style="text-align: center;">
-      <div class="row" style="text-align: center;">
-          <div class="col-sm-8 offset-sm-2" style="text-align: center;">
-              <div *ngFor="let message of messages" class="alert alert-success" style="text-align: center;">{{message.text}}</div>
-              <router-outlet></router-outlet>
-          </div>
-      </div>
-  </div>
-</div>
-<div class="col-md-6"style="text-align: center">
-  <h1 class="form">Template Form</h1>
-  <form #myForm="ngForm" class="form" (ngSubmit)="Onsubmit(myForm.value); myForm.reset()">
- <div class="form-group">
-     <input type="text" class="form-control" name="name" required placeholder="Enter Your name" #yourName="ngModel" [(ngModel)]= "user.name" >
-     <span class="error" *ngIf="yourName.invalid && yourName.touched">Please Enter Your Name</span>
- </div>
- <div class="form-group">
-      <input type="password" class="form-control" name="password" required placeholder="Enter password" #yourPassword="ngModel" ngModel >
-      <span class="error" *ngIf="yourPassword.invalid && yourPassword.touched">Please Enter password</span>
- </div>
- <div class="form-group">
-     <input type="email" class="form-control" name="email" required placeholder="Enter Your email" #yourEmail="ngModel" ngModel>
-     <span class="error" *ngIf="yourEmail.invalid && yourEmail.touched">Please Enter Your Email</span>
- </div>
- <div class="form-group">
-     <input type="tel" class="form-control" name="phone" required placeholder="Enter Your phone no." #yourPhone="ngModel" ngModel>
-     <span class="error" *ngIf="yourPhone.invalid && yourPhone.touched">Please Enter Your Phone</span>
- </div>
- <div class="form-group">
-     <input type="submit" [disabled]="myForm.invalid" class="btn btn-success">
- </div>
-</form>
-</div>
-<!-- Model Driven Form-->
-<div class="col-md-6" style="text-align: center">
-  <h1 class="form">Reactive Form</h1>
-  <form [formGroup]="contactForm" class="form" >
- <div class="form-group">
-     <input type="text" class="form-control" formControlName="yourName" placeholder="Enter Your name">
- </div>
- <div class="form-group">
-     <input type="email" class="form-control" formControlName="yourEmail" placeholder="Enter Your email" >
-     
- </div>
- <div class="form-group">
-     <input type="tel" class="form-control" formControlName="yourPhone" placeholder="Enter Your phone no." >
-     
- </div>
- <div class="form-group">
-  <input type="password" class="form-control" formControlName="yourPassword" placeholder="Enter Your password" >
-  
-</div>
- <div class="form-group">
-     <input type="submit" class="btn btn-success" (click)="reactiveSubmit()">
-     &nbsp; &nbsp; <button (click)="setDate()" class="btn btn-primary">Set Values</button>
-    
- </div>
-</form>
-</div>
-<app-home></app-home>
-<app-parent></app-parent>
-<router-outlet></router-outlet>
-<app-dropdown></app-dropdown>
+<app-root>/</app-root>
