@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserdataserviceService } from '../userdataservice.service';
+import {HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dropdown',
@@ -14,21 +16,37 @@ export class DropdownComponent implements OnInit {
     { id: 4, name: "Brazil" },
     { id: 5, name: "England" }
   ];
-  constructor() { }
-  
+  userinfo:any=[];
+  months = ["January", "February", "March", "April",
+    "May", "June", "July", "August", "September",
+    "October", "November", "December"];
+  isavailable = false;
+  constructor(public userdate:UserdataserviceService, public http:HttpClient) { }
+
 
   ngOnInit(): void {
+    this.getUserList()
   }
-  months = ["January", "February", "March", "April",
-      "May", "June", "July", "August", "September",
-      "October", "November", "December"];
-      isavailable = false;
-  myClickFunction(event:any) {
+  
+  myClickFunction(event: any) {
     this.isavailable = false;
- }
- changemonths(event:any) {
+  }
+
+  changemonths(event: any) {
     alert("Changed month from the Dropdown");
     console.log(event);
 
+  }
+
+  getUserList(){
+    this.userdate.getUserData().subscribe(Response=>{
+      this.userinfo=Response;
+      
+     }, (error) => {
+       console.log('getUserList' , error)
+     }
+
+     );
 }
+
 }

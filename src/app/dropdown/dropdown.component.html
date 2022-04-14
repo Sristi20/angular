@@ -19,6 +19,27 @@
     Click Me
   </button>
 </div>
-<div style="text-align: center;">
- <p> Square root of 4 is:{{ 4 | square}}</p>
+<div class="parent" >
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>NAME </th>
+      <th>Email </th>
+      <th>Phone</th>
+      <th>Username</th>
+      <th>Website</th>
+      <th>Company </th>
+      <th>Adress</th>
+    </tr>
+    <tr *ngFor="let i of userinfo" >
+      <td>{{i.id}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.phone}}</td>
+      <td>{{i.username}}</td>
+      <td>{{i.website}}</td>
+      <td>{{i.company.name}}</td>
+      <td>{{i.address.city}}</td>
+    </tr>
+  </table>
 </div>

@@ -7,10 +7,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserdataserviceService } from './userdataservice.service';
 import { MyserviceService } from './myservice.service';
-
+import { DropdownComponent } from './dropdown/dropdown.component';
+import { MessageService } from './message.service';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +21,7 @@ import { MyserviceService } from './myservice.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [MyserviceService,MessageService,UserdataserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
