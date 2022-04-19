@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserdataserviceService } from '../userdataservice.service';
 import {HttpClient } from '@angular/common/http';
 import { MyserviceService } from '../myservice.service'
 import { NewCmpComponent } from '../new-cmp/new-cmp.component';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { MessageService } from '../message.service';
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent implements OnInit, OnDestroy{
   title = 'Angular 6 Project!';
   Country = null;
   jsonval = {name:'Rox', age:'25', address:{a1:'Mumbai', a2:'Karnataka'}};
@@ -21,6 +22,9 @@ export class DropdownComponent implements OnInit {
     { id: 4, name: "Brazil" },
     { id: 5, name: "England" }
   ];
+
+  messages: any[] = [];
+  subscription: Subscription;
   
   fruits:string[]=[];
   child:string[]=[];
@@ -30,7 +34,7 @@ export class DropdownComponent implements OnInit {
     "October", "November", "December"];
   isavailable = false;
   contactForm:FormGroup;
-  constructor(public userdate:UserdataserviceService, public http:HttpClient,private fb:FormBuilder) { 
+  constructor(public userdate:UserdataserviceService, public http:HttpClient,private fb:FormBuilder, private messageService: MessageService) { 
     console.log(`new - data is ${this.data}`);
     this.contactForm=fb.group({
       yourName: ['', [Validators.required, Validators.minLength(3)]],
@@ -38,6 +42,14 @@ export class DropdownComponent implements OnInit {
       yourPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(13)]]
   
     })
+    this.subscription = this.messageService.getMessage().subscribe(message => {
+      if (message) {
+        this.messages.push(message);
+      } else {
+        // clear messages when empty message received
+        this.messages = [];
+      }
+    });
   }
 
 
@@ -54,6 +66,7 @@ export class DropdownComponent implements OnInit {
     console.log(event);
 
   }
+ 
 
   addParent(ele:any){
     this.child.push(ele);
@@ -129,6 +142,8 @@ data:number=100;
 
     ngOnDestroy() {
         console.log("ngOnDestroy");
+        // unsubscribe to ensure no memory leaks
+        this.subscription.unsubscribe();
     }
 
     fnAddNumber():void{
@@ -137,5 +152,13 @@ data:number=100;
 
     deleteNumber():void{
         this.data -=10;
+    }
+
+    getUserFormData(data:any)
+    {
+      console.warn(data)
+      this.userdate.SaveUser(data).subscribe((Response)=>{
+        console.warn(Response)
+      })
     }
 }

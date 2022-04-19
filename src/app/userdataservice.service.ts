@@ -5,15 +5,18 @@ import {HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserdataserviceService {
-  city="India"
+  city="India";
   constructor(private http:HttpClient) {
      
    }
    
    getUserData(){
-     let dataUrl="https://jsonplaceholder.typicode.com/users";
+     let dataUrl = "https://jsonplaceholder.typicode.com/users";
    return this.http.get(dataUrl);
    }
    
-  
+   SaveUser(data:any){
+     let dataUrl = "https://jsonplaceholder.typicode.com/users";
+     return this.http.post(dataUrl,data);
+   }
 }

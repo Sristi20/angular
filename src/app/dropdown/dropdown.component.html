@@ -80,10 +80,9 @@
 
 
 
-<div style = "text-align:center;">
-<a routerLink = "new-cmp">New component</a>
-</div>
+<h1 style = "text-align:center; color:brown;">{{title}} Hi angular</h1>
 <router-outlet></router-outlet>
+
 
 
 
@@ -112,19 +111,19 @@
   <h1 class="error" style = "text-align:center;">Template Form</h1>
   <form #userinfo="ngForm" class="form" (ngSubmit)="Onsubmit(userinfo.value); userinfo.reset()">
  <div class="form-group" style = "text-align:center;">
-     <input type="text" class="form-control" name="name" required placeholder="Enter Your name" #yourName="ngModel" [(ngModel)]= "user.name" >
-     <span class="error" *ngIf="yourName.invalid && yourName.touched">Please Enter Your Name</span>
+     <input type="text" class="form-control" name="name" required placeholder="Enter Your name" #yourName="ngModel" [(ngModel)]= "user.name" ><br>
+     <span class="error" *ngIf="yourName.invalid && yourName.touched" style = "color:brown;">Please Enter Your Name</span>
  </div>
  <div class="form-group" style = "text-align:center;">
-     <input type="email" class="form-control" name="email" required placeholder="Enter Your email" #yourEmail="ngModel" ngModel>
-     <span class="error" *ngIf="yourEmail.invalid && yourEmail.touched">Please Enter Your Email</span>
+     <input type="email" class="form-control" name="email" required placeholder="Enter Your email" #yourEmail="ngModel" ngModel><br>
+     <span class="error" *ngIf="yourEmail.invalid && yourEmail.touched" style = "color:brown;">Please Enter Your Email</span>
  </div>
  <div class="form-group" style = "text-align:center;">
-     <input type="tel" class="form-control" name="phone" required placeholder="Enter Your phone no." #yourPhone="ngModel" ngModel>
-     <span class="error" *ngIf="yourPhone.invalid && yourPhone.touched">Please Enter Your Phone</span>
+     <input type="tel" class="form-control" name="phone" required placeholder="Enter Your phone no." #yourPhone="ngModel" ngModel><br>
+     <span class="error" *ngIf="yourPhone.invalid && yourPhone.touched" style = "color:brown;">Please Enter Your Phone</span>
  </div>
  <div class="form-group" style = "text-align:center;">
-     <input type="submit" [disabled]="userinfo.invalid" class="btn btn-success">
+     <input type="submit" [disabled]="userinfo.invalid" class="btn btn-success"><br><br>
  </div>
 </form>
 </div>
@@ -133,14 +132,14 @@
   <h1 class="error" style = "text-align:center;">Reactive Form</h1>
   <form [formGroup]="contactForm" class="form" >
  <div class="form-group" style = "text-align:center;">
-     <input type="text" class="form-control" formControlName="yourName" placeholder="Enter Your name">
+     <input type="text" class="form-control" formControlName="yourName" placeholder="Enter Your name"><br>
  </div>
  <div class="form-group" style = "text-align:center;">
-     <input type="email" class="form-control" formControlName="yourEmail" placeholder="Enter Your email" >
+     <input type="email" class="form-control" formControlName="yourEmail" placeholder="Enter Your email" ><br>
      
  </div>
  <div class="form-group" style = "text-align:center;">
-     <input type="tel" class="form-control" formControlName="yourPhone" placeholder="Enter Your phone no." >
+     <input type="tel" class="form-control" formControlName="yourPhone" placeholder="Enter Your phone no." ><br>
      
  </div>
  <div class="form-group" style = "text-align:center;">
@@ -167,4 +166,16 @@
 </div>
 
 
-
+<div style = "text-align:center;">
+<h1>{{title}}</h1>
+<form #usersForm="ngForm" (ngSubmit)="getUserFormData(usersForm.value)">
+  <input type="text" ngModel name="name" placeholder="Enter the Name"><br><br>
+  <input type="email" ngModel name="email" placeholder="Enter the Email"><br><br>
+  <input type="number" ngModel name="phone" placeholder="Enter the phone number"><br><br>
+  <input type="text" ngModel name="username" placeholder="Enter the Username"><br><br>
+  <input type="text" ngModel name="website" placeholder="Enter the Website"><br><br>
+  <input type="text" ngModel name="company" placeholder="Enter the Company Name"><br><br>
+  <input type="text" ngModel name="address" placeholder="Enter the Adress"><br><br>
+  <button>Add New User</button>
+</form>
+</div>

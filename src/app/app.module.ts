@@ -14,6 +14,8 @@ import { SqrtPipe } from './sqrt.pipe';
 import { NewCmpComponent } from './new-cmp/new-cmp.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { HeroesComponent } from './heroes/heroes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,9 @@ import { RouterModule, Routes } from '@angular/router';
     ChangeTextDirective,
     SqrtPipe,
 
-    NewCmpComponent
+    NewCmpComponent,
+     HomeComponent,
+     HeroesComponent
   ],
   imports: [
     BrowserModule,
