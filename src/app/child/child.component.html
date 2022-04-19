@@ -1,0 +1,16 @@
+
+<div class="child"style = "text-align:center;">
+    <h1>Child Component</h1>
+    <form #formInfo="ngForm" (ngSubmit)="onSubmit(formInfo)" >
+      <input type="text" name="input" ngModel>
+      <input type="submit">
+    </form>
+    </div>
+    <div class="childInfo" style = "text-align:center;">
+      <h1>Change By Child</h1>
+      <p><strong *ngFor="let i of childInfo">{{ i }}</strong></p>
+    </div>
+    <div class="childInfo" style = "text-align:center;">
+        <h1>Change By Parent</h1>
+      <p><strong *ngFor="let i of parentFormInfo" >{{i}}</strong></p>
+    </div>

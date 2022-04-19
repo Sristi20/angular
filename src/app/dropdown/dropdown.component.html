@@ -1,3 +1,16 @@
+<div style = "text-align:center">
+  <h1>
+     Welcome to {{title}}.
+  </h1>
+</div>
+<div style = "text-align:center;">
+<b>{{title | uppercase}}</b><br/>
+<b>{{title | lowercase}}</b>
+</div>
+
+
+
+
 <div style = "text-align:center">Country:
     <select [(ngModel)]="Country">
       <option [ngValue]="null" disabled>Select Country</option>
@@ -19,7 +32,17 @@
     Click Me
   </button>
 </div>
-<div class="parent" >
+
+
+
+<div style = "text-align:center; color: blue;">
+  <span appChangeText >Welcome to {{title}}.</span>
+</div>
+
+
+
+
+<div class="parent" style = "text-align:center;">
   <table class="table">
     <tr>
       <th>ID</th>
@@ -31,7 +54,7 @@
       <th>Company </th>
       <th>Adress</th>
     </tr>
-    <tr *ngFor="let i of userinfo" >
+    <tr *ngFor="let i of employee" >
       <td>{{i.id}}</td>
       <td>{{i.name}}</td>
       <td>{{i.email}}</td>
@@ -43,3 +66,105 @@
     </tr>
   </table>
 </div>
+
+
+
+<div style = "text-align:center;">
+  <h1>Custom Pipe</h1>
+<b>Square root of 25 is: {{25 | sqrt}}</b>
+<br/>
+<b>Square root of 729 is: {{729 | sqrt}}</b>
+<h1>Json Pipe</h1>
+      <b>{{ jsonval | json }}</b>
+</div>
+
+
+
+<div style = "text-align:center;">
+<a routerLink = "new-cmp">New component</a>
+</div>
+<router-outlet></router-outlet>
+
+
+
+
+<div class="pa"style = "text-align:center;">
+  <h1>Parent Component</h1>
+  <form #formInfo="ngForm" (ngSubmit)="onClickSubmit(formInfo)" >
+    <input type="text" name="input" ngModel>
+    <input type="submit">
+  </form>
+  </div>
+  <div class="parentInfo"style = "text-align:center;">
+    <h1>Change By Parent</h1>
+  <p><strong *ngFor="let i of fruits" >{{i}}</strong></p>
+  </div>
+  <div class="parentInfo" style = "text-align:center;">
+    <h1>Change By Child</h1>
+  <p><strong *ngFor="let i of child" >{{i}}</strong></p>
+  </div>
+<app-child [parentFormInfo]="fruits"  (fruits)="addParent($event)" ></app-child>
+
+
+
+
+<div class="col-md-6" style = "text-align:center;">
+  <h1 class="error" style = "text-align:center;">Template Form</h1>
+  <form #userinfo="ngForm" class="form" (ngSubmit)="Onsubmit(userinfo.value); userinfo.reset()">
+ <div class="form-group" style = "text-align:center;">
+     <input type="text" class="form-control" name="name" required placeholder="Enter Your name" #yourName="ngModel" [(ngModel)]= "user.name" >
+     <span class="error" *ngIf="yourName.invalid && yourName.touched">Please Enter Your Name</span>
+ </div>
+ <div class="form-group" style = "text-align:center;">
+     <input type="email" class="form-control" name="email" required placeholder="Enter Your email" #yourEmail="ngModel" ngModel>
+     <span class="error" *ngIf="yourEmail.invalid && yourEmail.touched">Please Enter Your Email</span>
+ </div>
+ <div class="form-group" style = "text-align:center;">
+     <input type="tel" class="form-control" name="phone" required placeholder="Enter Your phone no." #yourPhone="ngModel" ngModel>
+     <span class="error" *ngIf="yourPhone.invalid && yourPhone.touched">Please Enter Your Phone</span>
+ </div>
+ <div class="form-group" style = "text-align:center;">
+     <input type="submit" [disabled]="userinfo.invalid" class="btn btn-success">
+ </div>
+</form>
+</div>
+<!-- Model Driven Form-->
+<div class="col-md-6" style = "text-align:center;">
+  <h1 class="error" style = "text-align:center;">Reactive Form</h1>
+  <form [formGroup]="contactForm" class="form" >
+ <div class="form-group" style = "text-align:center;">
+     <input type="text" class="form-control" formControlName="yourName" placeholder="Enter Your name">
+ </div>
+ <div class="form-group" style = "text-align:center;">
+     <input type="email" class="form-control" formControlName="yourEmail" placeholder="Enter Your email" >
+     
+ </div>
+ <div class="form-group" style = "text-align:center;">
+     <input type="tel" class="form-control" formControlName="yourPhone" placeholder="Enter Your phone no." >
+     
+ </div>
+ <div class="form-group" style = "text-align:center;">
+     <input type="submit" class="btn btn-success" (click)="reactiveSubmit()">
+     &nbsp; &nbsp; <a (click)="setDate()" class="btn btn-primary">Set Values</a>
+    
+ </div>
+</form>
+</div>
+
+
+
+<div style = "text-align:center;">
+<span class="setup">Given Number</span>
+    <h1 class="punchline">{{ data }}</h1>
+
+  <button type="button" class="btn btn-success"
+          (click)="fnAddNumber()">Add NUmber
+  </button>
+  <button type="button"
+          class="btn btn-danger"
+          (click)="deleteNumber()">Clear Number
+  </button>
+</div>
+
+
+
