@@ -156,9 +156,11 @@ data:number=100;
 
     getUserFormData(data:any)
     {
-      console.warn(data)
       this.userdate.SaveUser(data).subscribe((Response)=>{
-        console.warn(Response)
+        console.log(Response)
+      },
+      error=>{
+        console.log(error)
       })
     }
 }
