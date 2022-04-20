@@ -96,7 +96,12 @@ export class DropdownComponent implements OnInit, OnDestroy{
       })
     }
     Onsubmit(ele:any){
-      console.log(ele);
+      this.userdate.SaveUser(ele).subscribe((Response)=>{
+        console.log(Response)
+      },
+      error=>{
+        console.log(error)
+      })
     }
 
   getUserList(){
@@ -157,6 +162,14 @@ data:number=100;
     getUserFormData(data:any)
     {
       this.userdate.SaveUser(data).subscribe((Response)=>{
+        console.log(Response)
+      },
+      error=>{
+        console.log(error)
+      })
+    }
+    modSubmit(){
+      this.userdate.SaveUser(this.contactForm.value).subscribe((Response)=>{
         console.log(Response)
       },
       error=>{
