@@ -201,6 +201,12 @@
   <input type="text" ngModel name="website" placeholder="Enter the Website"><br><br>
   <input type="text" ngModel name="company" placeholder="Enter the Company Name"><br><br>
   <input type="text" ngModel name="address" placeholder="Enter the Adress"><br><br>
-  <button type="submit" (click)="modSubmit()">Add New User</button>
+  <button type="submit" (click)="modSubmit()">Add New User</button><br><br>
 </form>
+</div>
+
+<!-- ngStyle and ngClass -->
+<div class="content" style = "text-align:center;">
+  <button [ngStyle]="AddStyle()">ngStyle</button><br><br>
+  <button [ngClass]="AddClass()">ngclass</button><br><br>
 </div>

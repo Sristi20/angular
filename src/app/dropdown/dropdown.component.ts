@@ -22,7 +22,8 @@ export class DropdownComponent implements OnInit, OnDestroy{
     { id: 4, name: "Brazil" },
     { id: 5, name: "England" }
   ];
-
+  serverID: number = 10;  
+  serverStatus: string = 'Offline';  
   messages: any[] = [];
   subscription: Subscription;
   
@@ -50,6 +51,7 @@ export class DropdownComponent implements OnInit, OnDestroy{
         this.messages = [];
       }
     });
+    this.serverStatus = Math.random() > 0.5 ? 'Online' : 'Offline';  
   }
 
 
@@ -115,7 +117,21 @@ export class DropdownComponent implements OnInit, OnDestroy{
      );
 }
 
+AddStyle(){
+  return{
+    'font-size.px':20,
+    'font-style':'bold',
+    'color':'red'
+  }
+}
 
+AddClass(){
+  return{
+    'btn-bold': true,
+    'btn-blue':true,
+    'btn-size.px':20
+  }
+}
 
 data:number=100;
 
